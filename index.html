@@ -14,8 +14,24 @@
 	<link rel="stylesheet" href="./index_files/blocgrid.css">
 	<link rel="stylesheet" href="./index_files/page.css">
 	<link rel="stylesheet" href="./index_files/rgpd.css">
+	<link rel="manifest" href="manifest.json">
 </head>
 <body>
+	<script>
+        // Vérifie si le navigateur supporte les Service Workers
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('./sw.js') // Chemin vers le fichier sw.js
+                .then(() => {
+                    console.log('Service Worker enregistré avec succès.');
+                })
+                .catch((error) => {
+                    console.error('Erreur lors de l\'enregistrement du Service Worker:', error);
+                });
+        } else {
+            console.log('Les Service Workers ne sont pas supportés dans ce navigateur.');
+        }
+    </script>	
 	<div id="wrapper">
 		<!-- header -->
 		<header id="header" class="header">
